@@ -48,7 +48,7 @@
 n = int(input())
 m = int(input())
 k = int(input())
-if n % k == 0 or m % k == 0:
+if k % n == 0 or k % m == 0:
     print("Yes")
 else:
     print("No")

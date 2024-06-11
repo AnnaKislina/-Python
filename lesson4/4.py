@@ -13,10 +13,10 @@ print(out) """
 """ def select(f, col):
     return [f(x) for x in col] #возвращает список к которому применили функцию х
 def where(f, col):
-    return [x for x in col if f(x)] #возаращает ттолько те значения которые прошли провеерку f(x)
+    return [x for x in col if f(x)] #возаращает только те значения которые прошли проверку f(x)
 data = [1, 2, 3, 5, 8, 15, 23, 38]
 res = select(int, data)
-res = where(lambda x: x % 2 == 0, res)
+res = where(lambda x: x % 2 == 0, res) 
 print(res) # [2, 8, 38]
 res = list(select(lambda x: (x, x ** 2), res))
 print(res) """
@@ -25,10 +25,53 @@ print(res) """
 """   C клавиатуры вводится некий набор чисел, в качестве разделителя
 используется пробел. Этот набор чисел будет считан в качестве строки. Как
 превратить list строк в list чисел? """
-def where(f, col):
+""" def where(f, col):
     return [x for x in col if f(x)]
 data = '1 2 3 5 8 15 23 38'.split()
 res = map(int, data)
 res = where(lambda x: x % 2 == 0, res)
 res = list(map(lambda x: (x, x ** 2), res))
-print(res)
+print(res) """
+#-----------------------------------------------------------------
+""" 
+data = [x for x in range(10)]
+res = list(filter(lambda x: x % 2 == 0, data)))
+print(res) # [0, 2, 4, 6, 8] """
+#-----------------------------------------------------------------
+
+""" users = ['user1', 'user2', 'user3', 'user4', 'user5']
+ids = [4, 5, 9, 14, 7]
+data = list(zip(users, ids))
+print(data) # [('user1', 4), ('user2', 5), ('user3', 9), ('user4', 14), ('user5' ", 7)]
+#-----------------------------------------------------------------
+
+users = ['user1', 'user2', 'user3']
+data = list(enumerate(users)
+print(data) # [(0, 'user1'), (1, 'user2'), (2, 'user3))] """
+#-----------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------
+#-----------------------------------------------------------------
+# -----------------РАБОТА С ФАЙЛАМИ-------------------------------
+""" #Режим a
+colors = ['red', '9868', 'blue']
+data = open('file.txt', 'a') # здесь указываем режим, в котором будем работать
+data.writelines(colors) # разделителей не будет
+data.close() """
+#-----------------------------------------------------------------
+
+""" with open('file.txt', 'w') as data:
+ data.write('line 1\n')
+ data.write('line 2\n') """
+#-----------------------------------------------------------------
+
+""" #Чтение данных из файла:
+ path = 'file.txt'
+ data = open(path, 'r')
+ for line in data:
+ print(line)
+ data.close() """
+
+#-----------------------------------------------------------------

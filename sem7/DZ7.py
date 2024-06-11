@@ -49,10 +49,16 @@ print_operation_table(lambda x, y: x * y) 1 2 3 4 5 6
  5 10 15 20 25 30
  6 12 18 24 30 36  """
 
-def print_operation_table(operation, num_rows=6, num_columns=6):
-    a = [[operation(i, j) for j in range(1, num_columns + 1)] for i in range(1, num_rows + 1)]
-    for i in a:
-        print(*[f"{x:>3}" for x in i])
-
-
-print_operation_table(lambda x, y: x * y)
+def print_operation_table(operation, num_rows=9, num_columns=9):
+    result = []
+    if num_rows < 2 or num_columns < 2:
+        print('ОШИБКА! Размерности таблицы должны быть больше 2!')
+    else:
+        for i in range(1, num_rows + 1):
+            for j in range(1, num_columns + 1):
+                if j != num_columns :
+                    result.append(f'{operation(i, j)} ')
+                else:
+                    result.append(operation(i, j))
+            result.append('\n')
+        print(''.join([str(i) for i in result[:len(result) - 1]]))

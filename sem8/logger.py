@@ -21,16 +21,16 @@ def input_data():
         f"Выберите вариант: "))
 
     if var == 1:
-        with open('data_first_variant.csv','a', encoding='utf-8') as f:
+        with open('data1.csv','a', encoding='utf-8') as f:
             f.write(f"{name}\n{surname}\n{phone}\n{address}\n\n")
     elif var == 2:
-        with open('data_second_variant.csv','a', encoding='utf-8') as f:
+        with open('data2.csv','a', encoding='utf-8') as f:
             f.write(f"{name};{surname};{phone};{address}\n\n")
 
 
 def print_data():
     print('Вывожу данные из 1 файла:  \n')
-    with open('data_first_variant.csv','r', encoding='utf-8') as f:
+    with open('data1.csv','r', encoding='utf-8') as f:
         data_first = f.readlines()
         data_first_list = []
         j = 0
@@ -41,9 +41,8 @@ def print_data():
         print(''.join(data_first_list))
     
     print('Вывожу данные из 2 файла:  \n')
-    with open('data_second_variant.csv','r', encoding='utf-8') as f:
+    with open('data2.csv','r', encoding='utf-8') as f:
         data_second = f.readlines()
-        print(data_second)
+        print(*data_second)
 
 
-print_data()

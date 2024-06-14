@@ -12,6 +12,3 @@ def interface():
     elif comand == 2:
         print_data()
 
-
-
-interface()

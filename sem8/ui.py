@@ -11,11 +11,10 @@ def interface():
         input_data()
     elif comand == 2:
         print_data()
-    elif comand == 3:
-        contact_list = list(input("Введите Имя или Фамилию для поиска контакта: "))
-        find_data(contact_list)
-    elif comand == 4:
+    elif comand == 3:      # найти контакт
+        find_data()
+    elif comand == 4:      # изменить контакт
         change_data()
-    elif comand == 5:
+    elif comand == 5:      # удалить контакт
         del_data()
 

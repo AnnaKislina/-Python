@@ -27,7 +27,7 @@ def input_data():
         with open('data2.csv','a', encoding='utf-8') as f:
             f.write(f"{name};{surname};{phone};{address}\n\n")
 
-
+#--------------------------------------------------------------
 def print_data():
     print('Вывожу данные из 1 файла:  \n')
     with open('data1.csv','r', encoding='utf-8') as f:
@@ -39,10 +39,47 @@ def print_data():
                 data_first_list.append(''.join(data_first[j:i+1]))
                 j = i
         print(''.join(data_first_list))
-    
     print('Вывожу данные из 2 файла:  \n')
     with open('data2.csv','r', encoding='utf-8') as f:
         data_second = f.readlines()
         print(*data_second)
+        
+def print_contacts(contact_list: list):
+    for contact in contact_list:
+        for key, value in contact.items():
+            print(f'{key}: {value:12}', end='')
+        print()        
 
 
+#---------------------------------------------------------------
+def find_data(contact_list):
+    search_field, search_value = search_parameters()
+    search_value_dict = {'1': 'Фамилия', '2': 'Имя', '3': 'Номер телефона'}
+    found_contacts = []
+    for contact in contact_list:
+        if contact[search_value_dict[search_field]] == search_value:
+            found_contacts.append(contact)
+    if len(found_contacts) == 0:
+        print('Контакт не найден!')
+    else:
+        print_contacts(found_contacts)
+    print()
+
+def search_parameters():
+    print('По какому полю выполнить поиск?')
+    search_field = input('1 - по фамилии\n2 - по имени')
+    print()
+    search_value = None
+    if search_field == '1':
+        search_value = input('Введите фамилию для поиска: ')
+        print()
+    elif search_field == '2':
+        search_value = input('Введите имя для поиска: ')
+        print()
+    return search_field, search_value
+
+#-----------------------------------------------------------------
+def change_data():
+    empty
+def del_data():
+    empty

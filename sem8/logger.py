@@ -7,9 +7,9 @@ def input_data():
     address = address_data()
     var = int(input(f"В каком формате записать данные\n\n"
     f"1 Вариант: \n"
-    f"{name};{surname};{phone};{address}\n\n"
-    f"2 Вариант: \n"
     f"{name}\n{surname}\n{phone}\n{address}\n\n"
+    f"2 Вариант: \n"
+    f"{name};{surname};{phone};{address}\n\n"
     f"Выберите вариант: "))
     while var  != 1 and var  != 2:
         print("Неправильно введена команда, повтори: ")
@@ -22,7 +22,7 @@ def input_data():
 
     if var == 1:
         with open('data1.csv','a', encoding='utf-8') as f:
-            f.write(f"{name}\n{surname}\n{phone}\n{address}\n\n")
+            f.write(f"{name}\n{surname}\n{phone}\n{address}\n\n\n")
     elif var == 2:
         with open('data2.csv','a', encoding='utf-8') as f:
             f.write(f"{name};{surname};{phone};{address}\n\n")
@@ -46,18 +46,18 @@ def print_data():
                
 
 
-#---------------------------------------------------------------
+#----------------------поиск контакта-----------------------------------------
 def find_data():
-    with open('data2.csv', 'r', encoding='utf8') as f:
-        seach_param = (input('Введите имя или фамилию для поиска: ' ).title())
+    seach_param = (input('Введите имя или фамилию для поиска: ' ).title()) 
+    with open('data2.csv', 'w', encoding='utf8') as f:                # поиск во второй книге
         for line in f:
             if seach_param in line:
                 print(line)
-                
-"""     search_field, search_value = search_parameters()
+   
+    search_field, search_value = search_parameters()          # поиск в первой книге
     search_value_dict = {'1': 'Фамилия', '2': 'Имя', '3': 'Номер телефона', '4': 'Адрес'}
     found_contacts = []
-    with open('data2.csv','r', encoding='utf-8') as f:
+    with open('data1.csv','w', encoding='utf-8') as f:
         contact_list = f.readlines()
     for contact in contact_list:
         if contact[search_value_dict[search_field]] == search_value:
@@ -65,10 +65,9 @@ def find_data():
     if len(found_contacts) == 0:
         print('Контакт не найден!')
     else:
-        print_contacts(found_contacts)
-    print() """
+        print(found_contacts)
 
-""" def search_parameters():
+def search_parameters():
     print('По какому полю выполнить поиск?')
     search_field = input('1 - по фамилии\n2 - по имени')
     print()
@@ -79,10 +78,33 @@ def find_data():
     elif search_field == '2':
         search_value = input('Введите имя для поиска: ')
         print()
-    return search_field, search_value """
+    return search_field, search_value
 
-#-----------------------------------------------------------------
+#------------------изменить контакт-----------------------------------------------
 def change_data():
-    pass
+    with open('data2.csv', 'r', encoding='utf8') as f: 
+            seach_param = (input('Введите параметр для поиска: ' ).title())
+            with open ('data2.csv', 'w', encoding='utf8') as f:
+                for line in seach_param:
+                    if seach_param in line:
+                        print(line)
+                        add_f = (input('Введите Имя: ' ).title())
+                        add_i = (input('Введите фамилию: ' ).title())
+                        add_tel = (input('Введите телефон: ' ).title())
+                        new_line = add_f +' '+add_i +' '+ add_tel + '\n'
+                        line = line.replace(line, new_line)
+                    f.writelines(line)
+
+
+#----------------удалить контакт-------------------------------------------------
 def del_data():
-    pass
+    with open('data2.csv', 'r', encoding='utf8') as f: 
+        X = input('Введите Имя или Фамилию для удаления: ')
+        lines = f.readlines()
+        with open ('data2.csv', 'w', encoding='utf8') as f:
+            for line in lines:
+                if X in line:
+                    print("Строка удалена")
+                else:
+                    print(line)    
+                    f.write(line)

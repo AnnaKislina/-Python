@@ -56,35 +56,34 @@ def change_data():
         change_dop_data()    
     elif var == 2:
         with open('data2.csv', 'r', encoding='utf8') as f: 
-                seach_param = (input('Введите параметр для поиска: ' ).title())
-                with open ('data2.csv', 'w', encoding='utf8') as f:
-                    for line in seach_param:
-                        if seach_param in line:
-                            print(line)
-                            fam = (input('Имя: ' ).title())
-                            name = (input('Фамилия: ' ).title())
-                            tel = (input('Телефон: ' ).title())
-                            adr = (input('Телефон: ' ).title())
-                            new_line = fam +';'+ name +';'+ tel +';'+ adr +'\n'
-                            line = line.replace(line, new_line)
+            seach_param = (input('Введите параметр для поиска: ' ).title())
+            with open ('data2.csv', 'w', encoding='utf8') as f:
+                for line in seach_param:
+                    if seach_param in line:
+                        print(line)
+                        fam = (input('Имя: ' ).title())
+                        name = (input('Фамилия: ' ).title())
+                        tel = (input('Телефон: ' ).title())
+                        adr = (input('Телефон: ' ).title())
+                        new_line = fam +';'+ name +';'+ tel +';'+ adr +'\n'
+                        line = line.replace(line, new_line)
                         f.writelines(line)
 
 
 
 def change_dop_data():      # функция замены контакта
-     with open('data1.csv','r',encoding='utf-8') as f:
-            data_first=f.readlines()  
-            data_first_list=[]              
-            j=0
-            for i in range(1,len(data_first)):
-                if data_first[i]=='\n':  
-                    data_first_list.append(''.join(data_first[j:i])) 
-                    j=i
-                elif i==len(data_first)-1:
-                    data_first_list.append(''.join(data_first[j:i+1]))   
-        
-        num = int(input(f'Всего записей {len(data_first_list)}. Введите номер записи, в которой бдут изменения: ')) 
-        while num > len(data_first_list) or num < 1 :
+    with open('data1.csv','r',encoding='utf-8') as f:
+        data_first=f.readlines()  
+        data_first_list=[]              
+        j=0
+        for i in range(1,len(data_first)):
+            if data_first[i]=='\n':  
+                data_first_list.append(''.join(data_first[j:i])) 
+                j=i
+            elif i==len(data_first)-1:
+                data_first_list.append(''.join(data_first[j:i+1]))
+        num = int(input(f'Всего записей {len(data_first_list)}. Введите номер записи, в которой бдут изменения: '))
+        while num > len(data_first_list) or num < 1:
             print('Неправильный ввод')
             num = int(input(f'Введите число от 1 до {len(data_first_list)}: '))
         name = name_data()
@@ -92,16 +91,13 @@ def change_dop_data():      # функция замены контакта
         phone = phone_data()
         adress = adress_data()
         new_kontact = '\n' + name + '\n' + surname + '\n' + phone + '\n' + adress + '\n'
-        data_first_list[num - 1] = new_kontact
-
-        with open('data1.csv','w',encoding='utf-8') as f:
-            f.write(''.join(data_first_list))
-
-    
-    
+        ata_first_list[num - 1] = new_kontact
+    with open('data1.csv','w',encoding='utf-8') as f:
+        f.write(''.join(data_first_list))
 
 #----------------удалить контакт-------------------------------------------------
 def del_data():
+    pass
 """     with open('data2.csv', 'r', encoding='utf8') as f: 
         X = input('Введите Имя или Фамилию для удаления: ')
         lines = f.readlines()
@@ -112,7 +108,7 @@ def del_data():
                 else:
                     print(line)    
                     f.write(line) """
-    var=int(input('Введите номер справочника, в которм нужно удалить запись: '))
+"""     var=int(input('Введите номер справочника, в которм нужно удалить запись: '))
     while var !=1 and var !=2:
         print('Неправильный ввод')
         var=int(input('Введите число 1 или 2: '))
@@ -155,4 +151,4 @@ def del_data():
         #print(data_second2)
         
         with open('data_second_variant.csv','w',encoding='utf-8') as f:
-            f.write(''.join(data_second2))
+            f.write(''.join(data_second2)) """

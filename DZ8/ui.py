@@ -1,10 +1,11 @@
-from logger import input_data, print_data, find_data, change_data, del_data
+from logger import input_data, print_data
+from change_and_del import update_data, delete_data
 
 def interface():
     print_menu()
-    comand = int(input('Введите номер задачи от 1 до 6: '))
-    if comand > 6: print('Неправильно введена команда, повтори: ')
-    if comand == 6: print('Выход')
+    comand = int(input('Введите номер задачи от 1 до 5: '))
+    if comand > 5: print('Неправильно введена команда, повтори: ')
+    if comand == 5: print('Выход')
     else:
         match comand:
             case 1: # добавить контакт
@@ -13,14 +14,11 @@ def interface():
             case 2: # вывести все контакты
                 print_data()
                 interface()
-            case 3: # поиск контактов
-                find_data()
+            case 3: # изменить контакт
+                update_data()
                 interface()
-            case 4: # изменить контакт
-                change_data()
-                interface()
-            case 5: # удалить контакт
-                del_data()
+            case 4: # удалить контакт
+                delete_data()
                 interface() 
 
 def print_menu():
@@ -28,9 +26,8 @@ def print_menu():
  ------------------------------- \n
  1 - добавить контакт
  2 - вывести все контакты
- 3 - поиск контакта 
- 4 - изменить данные контакта 
- 5 - удалить контакт 
- 6 - выход 
+ 3 - изменить данные контакта 
+ 4 - удалить контакт 
+ 5 - выход 
  ------------------------------- \n 
     """)
